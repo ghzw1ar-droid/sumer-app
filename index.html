@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#A04122">
+<title>مطعم سومر | اطلب الآن</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brick:#A04122;--deep:#6E2A14;--cream:#F3EAD4;--bg:#F6F3EE;--ink:#2B1B14;--mut:#7B6A60;--line:#E9E2D6}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html{scroll-padding-top:62px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Tajawal,system-ui,sans-serif;padding-bottom:96px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #E58A63;outline-offset:2px}
+.cov{height:128px;background:var(--brick) repeating-radial-gradient(circle at 50% 150%,rgba(243,234,212,.16) 0 2px,transparent 2px 24px)}
+.wrap{max-width:640px;margin:0 auto}
+.inf{display:flex;align-items:center;gap:14px;margin:-44px 14px 0;position:relative;padding:14px;background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(60,25,10,.12)}
+.lg{width:72px;height:72px;border-radius:50%;background:var(--cream);padding:10px;object-fit:contain;flex:none}
+.inf h1{margin:0;font:800 22px/1.25 Tajawal,sans-serif}
+.inf p{margin:0;color:var(--mut);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 14px 0}
+.tags span{background:var(--cream);color:var(--deep);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:500}
+.sr{margin:12px 14px 14px}
+.sr input{width:100%;padding:12px 14px;border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:22px;overflow-x:auto;padding:0 max(14px,calc((100% - 612px)/2));background:#fff;border-bottom:1px solid var(--line);scrollbar-width:none}
+nav button{flex:none;border:0;border-bottom:3px solid transparent;background:none;color:var(--mut);padding:14px 2px 11px;font-weight:500}
+nav button.on{color:var(--brick);border-color:var(--brick);font-weight:700}
+#tb{display:none;width:calc(100% - 28px);max-width:612px;margin:12px auto 0;padding:12px 14px;border:0;border-inline-start:5px solid var(--brick);border-radius:12px;background:#fff;font-weight:700;text-align:right;box-shadow:0 1px 0 var(--line)}
+main{max-width:640px;margin:0 auto;padding:0 14px}
+section{margin:20px 0}
+h2{font:800 20px/1.3 Tajawal,sans-serif;margin:0 0 10px}
+.it{display:flex;gap:12px;padding:14px;background:#fff;border-radius:16px;margin-bottom:10px;box-shadow:0 1px 0 var(--line)}
+.tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.tx b{font-weight:700;font-size:16px}
+.tx small{color:var(--mut);font-size:13px;line-height:1.4}
+.pr{margin-top:auto;padding-top:6px;font-weight:800;color:var(--brick)}
+.tile{position:relative;flex:none;width:96px;height:96px;border-radius:14px;background:var(--cream)}
+.tile:before{content:"";position:absolute;inset:0;border-radius:inherit;background:url(logo.png) center/54% no-repeat;opacity:.3}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.tile [data-c]{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%)}
+.add{width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--brick);font-size:24px;line-height:1;font-weight:700;box-shadow:0 2px 8px rgba(60,25,10,.28)}
+.step{display:flex;align-items:center;gap:2px;background:var(--brick);border-radius:999px;padding:2px;box-shadow:0 2px 8px rgba(60,25,10,.28)}
+.step button{width:32px;height:32px;border:0;border-radius:50%;background:none;color:#fff;font-size:20px;line-height:1}
+.step span{min-width:20px;text-align:center;font-weight:700;color:#fff}
+.row{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.nm{flex:1;min-width:0}
+.nm b{display:block;font-weight:500}
+.nm small{color:var(--mut);font-size:13px}
+#bar{display:none;position:fixed;inset:auto 0 0 0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:10}
+#bb{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;max-width:640px;margin:0 auto;padding:14px 16px;border:0;border-radius:16px;background:var(--brick);color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(110,42,20,.4)}
+.bd{min-width:28px;height:28px;border-radius:50%;background:#fff;color:var(--brick);display:grid;place-items:center;font-size:14px}
+footer{max-width:640px;margin:28px auto 0;padding:0 14px;text-align:center;font-size:14px;color:var(--mut)}
+footer a{color:var(--brick);font-weight:500}
+#sh{display:none;position:fixed;inset:0;z-index:20;background:rgba(30,12,6,.6)}
+.pn{position:absolute;inset:auto 0 0 0;max-width:640px;max-height:92%;margin:0 auto;overflow:auto;background:#fff;color:var(--ink);border-radius:22px 22px 0 0;padding:16px 16px calc(24px + env(safe-area-inset-bottom))}
+.hd{display:flex;justify-content:space-between;align-items:center}
+.hd h2{margin:0}
+#x{border:0;background:var(--bg);width:40px;height:40px;border-radius:50%;font-size:18px}
+.f label{display:block;margin:12px 0 0;font-weight:500}
+.f input,.f select,.f textarea{display:block;width:100%;margin-top:4px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.lnk{margin-top:8px;border:0;background:none;color:var(--brick);font-weight:700;padding:6px 0;text-decoration:underline}
+.tl{display:flex;justify-content:space-between;padding:4px 0}
+.big{font-weight:800;font-size:19px;border-top:1.5px solid var(--line);margin-top:6px;padding-top:10px}
+.mut{color:var(--mut);margin:8px 0}
+#er{color:#B3261E;font-weight:500;min-height:1.5em;margin:6px 0}
+.pri{width:100%;padding:14px;border:0;border-radius:14px;background:var(--brick);color:#fff;font-weight:700;font-size:17px}
+.pri:disabled{opacity:.55}
+ol{list-style:none;margin:14px 0;padding:0}
+ol li{padding:10px 30px 10px 0;position:relative;color:var(--mut)}
+ol li:before{content:"";position:absolute;right:4px;top:15px;width:14px;height:14px;border-radius:50%;border:2px solid var(--line)}
+ol li.on{color:var(--brick);font-weight:700}
+ol li.on:before{background:var(--brick);border-color:var(--brick)}
+.err{padding:30px 0;text-align:center;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="cov"></div>
+<div class="wrap">
+ <div class="inf"><img class="lg" src="logo.png" alt="سومر" width="72" height="72"><div><h1>مطعم سومر</h1><p>منذ 1996 • الموصل</p></div></div>
+ <div class="tags"><span>توصيل إلى بيتك</span><span>الدفع عند الاستلام</span></div>
+ <div class="sr"><input id="q" type="search" placeholder="ابحث في المنيو" aria-label="ابحث في المنيو"></div>
+</div>
+<nav id="nv" aria-label="تصنيفات المنيو"></nav>
+<button id="tb" type="button"></button>
+<main id="m"><p class="err">جارٍ تحميل المنيو…</p></main>
+<footer>SUMER Restaurant • ESTD 1996<br>الموصل - سومر - التقاطع الأول<br><a href="tel:07710111235">07710111235</a> • <a href="tel:07710111303">07710111303</a> • <a href="tel:07512255971">07512255971</a></footer>
+<div id="bar"><button id="bb" type="button"><span class="bd"><b id="bn"></b></span><span>عرض السلة</span><span id="bt"></span></button></div>
+
+<div id="sh" role="dialog" aria-modal="true" aria-label="السلة">
+ <div class="pn">
+  <div class="hd"><h2 id="st">سلتك</h2><button id="x" type="button" aria-label="إغلاق">✕</button></div>
+  <div id="ord">
+   <div id="ln"></div>
+   <div class="f">
+    <label>الاسم<input id="nm" autocomplete="name"></label>
+    <label>رقم الهاتف<input id="ph" type="tel" inputmode="tel" autocomplete="tel"></label>
+    <label>منطقة التوصيل<select id="zn"></select></label>
+    <label>العنوان بالتفصيل<textarea id="ad" rows="2" placeholder="الحي، أقرب نقطة دالة، رقم الدار"></textarea></label>
+    <button type="button" id="gp" class="lnk">إضافة موقعي الحالي للسائق</button>
+    <label>ملاحظات (اختياري)<textarea id="nt" rows="2"></textarea></label>
+   </div>
+   <div id="tt" style="margin-top:14px"></div>
+   <p class="mut">الدفع نقداً عند الاستلام.</p>
+   <p id="er" role="alert"></p>
+   <button id="go" type="button" class="pri">إرسال الطلب</button>
+  </div>
+  <div id="trk" hidden></div>
+ </div>
+</div>
+
+<script>
+const U='https://bxtihhtjwsztqncdanzo.supabase.co',
+K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4dGloaHRqd3N6dHFuY2RhbnpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0Njc3MjEsImV4cCI6MjExMDA0MzcyMX0.lr74dhhaVJw3gHNFFKg3NyNFJK6boytnJ21t2etYavo';
+const $=s=>document.querySelector(s),H={apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>new Intl.NumberFormat('ar-IQ').format(n)+' د.ع';
+const ls={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+async function api(p,o={}){const r=await fetch(U+'/rest/v1/'+p,{headers:H,...o});const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||'request failed');return j}
+let cats=[],items=[],zones=[],cart=ls.get('sumer_cart2')||{},loc=null,timer=null;
+const byId=id=>items.find(x=>x.id==id);
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const sub=()=>Object.entries(cart).reduce((a,[id,q])=>a+(byId(id)?byId(id).price*q:0),0);
+const ctl=id=>{const q=cart[id]||0;return q?`<span class="step"><button data-a="m" data-i="${id}" aria-label="إنقاص">−</button><span>${q}</span><button data-a="p" data-i="${id}" aria-label="زيادة">+</button></span>`:`<button class="add" data-a="p" data-i="${id}" aria-label="أضف إلى السلة">+</button>`};
+
+function bar(){const n=count();$('#bar').style.display=n?'block':'none';$('#bn').textContent=n;$('#bt').textContent=money(sub())}
+function lines(){
+  const ids=Object.keys(cart).filter(byId);
+  $('#ln').innerHTML=ids.length?'<div class="card" style="border:1.5px solid var(--line)">'+ids.map(id=>{const x=byId(id);return `<div class="row"><div class="nm"><b>${esc(x.name)}</b><small>${money(x.price*cart[id])}</small></div>${ctl(id)}</div>`}).join('')+'</div>':'<p class="mut">السلة فارغة.</p>';
+  const s=sub(),z=zones.find(z=>z.id==$('#zn').value),f=z?z.fee:0;
+  $('#tt').innerHTML=`<div class="tl"><span>مجموع الطلبات</span><span>${money(s)}</span></div><div class="tl"><span>التوصيل</span><span>${z?money(f):'اختر المنطقة'}</span></div><div class="tl big"><span>الإجمالي</span><span>${money(s+f)}</span></div>`;
+}
+function chg(id,d){
+  const q=(cart[id]||0)+d;
+  if(q<=0)delete cart[id];else cart[id]=Math.min(q,50);
+  ls.set('sumer_cart2',cart);
+  const e=document.querySelector(`[data-c="${id}"]`);if(e)e.innerHTML=ctl(id);
+  bar();if($('#sh').style.display=='block')lines();
+}
+function openSheet(trk){
+  $('#sh').style.display='block';document.body.style.overflow='hidden';
+  $('#ord').hidden=!!trk;$('#trk').hidden=!trk;$('#st').textContent=trk?'طلبك':'سلتك';
+  if(!trk){$('#er').textContent='';lines()}
+}
+function closeSheet(){$('#sh').style.display='none';document.body.style.overflow=''}
+
+const ST=[['new','استلمنا طلبك'],['preparing','قيد التحضير'],['out_for_delivery','في الطريق إليك'],['delivered','تم التسليم']];
+async function track(show){
+  const t=ls.get('sumer_trk');if(!t)return;clearTimeout(timer);
+  try{
+    const s=await api('rpc/get_order_status',{method:'POST',body:JSON.stringify({p_token:t})});
+    if(!s){ls.set('sumer_trk',null);$('#tb').style.display='none';return}
+    const i=ST.findIndex(x=>x[0]==s.status),end=s.status=='delivered'||s.status=='cancelled';
+    $('#tb').style.display=end?'none':'block';
+    $('#tb').textContent='طلبك رقم '+s.order_no+': '+(i<0?'ملغي':ST[i][1])+' — اضغط للتفاصيل';
+    $('#trk').innerHTML=`<h3>طلب رقم ${s.order_no}</h3>`+(s.status=='cancelled'?'<p>أُلغي هذا الطلب. اتصل بالمطعم للاستفسار.</p>':`<ol>${ST.map((x,k)=>`<li class="${k<=i?'on':''}">${x[1]}</li>`).join('')}</ol>`)+`<div class="tl big"><span>الإجمالي مع التوصيل</span><span>${money(s.total)}</span></div><p class="mut">الدفع نقداً عند الاستلام.</p><button class="pri" id="nw" type="button">${end?'طلب جديد':'إغلاق'}</button>`;
+    $('#nw').onclick=()=>{if(end)ls.set('sumer_trk',null);closeSheet()};
+    if(show)openSheet(true);
+    if(!end)timer=setTimeout(()=>track(false),15000);
+  }catch(e){timer=setTimeout(()=>track(false),30000)}
+}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');
+  if(b){chg(b.dataset.i,b.dataset.a=='p'?1:-1);return}
+  const g=e.target.closest('[data-g]');
+  if(g){document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n===g));document.getElementById(g.dataset.g).scrollIntoView()}
+});
+$('#bb').onclick=()=>openSheet(false);
+$('#tb').onclick=()=>track(true);
+$('#x').onclick=closeSheet;
+$('#sh').addEventListener('click',e=>{if(e.target.id=='sh')closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key=='Escape')closeSheet()});
+$('#zn').onchange=lines;
+$('#gp').onclick=()=>{
+  if(!navigator.geolocation){$('#gp').textContent='الموقع غير مدعوم، اكتب العنوان بالتفصيل';return}
+  navigator.geolocation.getCurrentPosition(p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};$('#gp').textContent='تمت إضافة موقعك ✓'},()=>{$('#gp').textContent='تعذّر تحديد الموقع، اكتب العنوان بالتفصيل'},{timeout:10000});
+};
+$('#go').onclick=async()=>{
+  const n=$('#nm').value.trim(),p=$('#ph').value.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[\s-]/g,''),a=$('#ad').value.trim(),z=$('#zn').value;
+  const msg=!Object.keys(cart).filter(byId).length?'السلة فارغة':n.length<2?'اكتب اسمك':!/^\+?\d{8,15}$/.test(p)?'رقم الهاتف غير صحيح':!z?'اختر منطقة التوصيل':a.length<3?'اكتب عنوانك بالتفصيل':'';
+  $('#er').textContent=msg;if(msg)return;
+  $('#go').disabled=true;
+  try{
+    const r=await api('rpc/place_order',{method:'POST',body:JSON.stringify({p_name:n,p_phone:p,p_address:a,p_lat:loc?loc.lat:null,p_lng:loc?loc.lng:null,p_zone_id:+z,p_notes:$('#nt').value.trim()||null,p_items:Object.entries(cart).filter(([i])=>byId(i)).map(([i,q])=>({item_id:+i,qty:q}))})});
+    ls.set('sumer_me',{n,p,a,z});ls.set('sumer_trk',r.tracking_token);
+    cart={};ls.set('sumer_cart2',cart);
+    document.querySelectorAll('[data-c]').forEach(el=>el.innerHTML=ctl(el.dataset.c));
+    bar();track(true);
+  }catch(x){
+    $('#er').textContent=/unavailable|invalid/.test(x.message)?'أحد الأصناف أو المنطقة لم يعد متوفراً. أعد تحميل الصفحة وحاول مجدداً.':'تعذّر إرسال الطلب. تحقق من الاتصال وحاول مجدداً.';
+  }
+  $('#go').disabled=false;
+};
+
+(async()=>{
+  try{
+    [cats,items,zones]=await Promise.all([
+      api('menu_categories?select=id,name&order=sort_order'),
+      api('menu_items?select=id,category_id,name,price,price_label,description,image_url&is_available=eq.true&order=sort_order'),
+      api('delivery_zones?select=id,name,fee&is_active=eq.true&order=id')]);
+  }catch(e){$('#m').innerHTML='<p class="err">تعذّر تحميل المنيو. تحقق من الاتصال وأعد تحميل الصفحة.</p>';return}
+  Object.keys(cart).forEach(i=>{if(!byId(i))delete cart[i]});
+  const shown=cats.filter(c=>items.some(x=>x.category_id==c.id));
+  $('#nv').innerHTML=shown.map(c=>`<button data-g="c${c.id}">${esc(c.name)}</button>`).join('');
+  $('#m').innerHTML=shown.map(c=>`<section id="c${c.id}"><h2>${esc(c.name)}</h2>${items.filter(x=>x.category_id==c.id).map(x=>`<article class="it"><div class="tx"><b>${esc(x.name)}</b>${x.description?`<small>${esc(x.description)}</small>`:''}${x.price_label?`<small>${esc(x.price_label)}</small>`:''}<span class="pr">${money(x.price)}</span></div><div class="tile">${x.image_url?`<img src="${esc(x.image_url)}" alt="" loading="lazy">`:''}<span data-c="${x.id}">${ctl(x.id)}</span></div></article>`).join('')}</section>`).join('')+'<p class="err" id="nr" hidden>لا توجد أصناف مطابقة.</p>';
+  $('#zn').innerHTML='<option value="">اختر منطقتك</option>'+zones.map(z=>`<option value="${z.id}">${esc(z.name)} — ${money(z.fee)}</option>`).join('');
+  const me=ls.get('sumer_me');
+  if(me){$('#nm').value=me.n||'';$('#ph').value=me.p||'';$('#ad').value=me.a||'';if(zones.some(z=>z.id==me.z))$('#zn').value=me.z}
+  $('#q').oninput=()=>{const v=$('#q').value.trim().toLowerCase();let any=0;
+    document.querySelectorAll('section').forEach(sc=>{let n=0;sc.querySelectorAll('.it').forEach(i=>{const h=!!v&&!i.textContent.toLowerCase().includes(v);i.hidden=h;if(!h)n++});sc.hidden=!n;any+=n});
+    $('#nr').hidden=!!any};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const b=document.querySelector(`[data-g="${e.target.id}"]`);document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n===b));if(b)b.scrollIntoView({inline:'center',block:'nearest'})}}),{rootMargin:'-110px 0px -70% 0px'});
+  document.querySelectorAll('section').forEach(sc=>io.observe(sc));
+  bar();track(false);
+})();
+</script>
+</body>
+</html>
