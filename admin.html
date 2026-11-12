@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#A04122">
+<title>لوحة مطعم سومر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brick:#A04122;--deep:#6E2A14;--cream:#F3EAD4;--bg:#F6F3EE;--ink:#2B1B14;--mut:#7B6A60;--line:#E9E2D6;--ok:#2E7D4F}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Tajawal,system-ui,sans-serif}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #E58A63;outline-offset:2px}
+.login{max-width:380px;margin:8vh auto;padding:24px;background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(60,25,10,.12);text-align:center}
+.login img{width:96px;height:auto}
+.login h1{margin:8px 0 16px;font:800 22px Tajawal}
+.login input{display:block;width:100%;margin:10px 0;padding:12px;border:1.5px solid var(--line);border-radius:12px;text-align:center;direction:ltr}
+.pri,.sec,.ghost{border:0;border-radius:12px;padding:11px 16px;font-weight:700}
+.pri{background:var(--brick);color:#fff}
+.sec{background:var(--cream);color:var(--deep)}
+.ghost{background:#fff;color:#B3261E;box-shadow:inset 0 0 0 1.5px #E8C3BF}
+.login .pri{width:100%}
+#le{color:#B3261E;min-height:1.5em;margin:8px 0 0}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:var(--brick);color:#fff}
+.bar img{width:38px;height:38px;background:var(--cream);border-radius:50%;padding:4px}
+.bar b{font-weight:800;font-size:18px}
+.bar #sum{flex:1;font-size:14px;opacity:.9}
+.bar button{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:10px;padding:7px 12px;font-weight:500}
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:6px;overflow-x:auto;padding:0 12px;background:#fff;border-bottom:1px solid var(--line);scrollbar-width:none}
+.tabs button{flex:none;border:0;border-bottom:3px solid transparent;background:none;color:var(--mut);padding:14px 10px 11px;font-weight:500}
+.tabs button.on{color:var(--brick);border-color:var(--brick);font-weight:700}
+.tabs i{font-style:normal;background:var(--brick);color:#fff;border-radius:999px;padding:0 7px;font-size:13px;margin-inline-start:4px}
+.tabs i:empty{display:none}
+main{max-width:1000px;margin:0 auto;padding:14px}
+#list{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.o{background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column;gap:8px}
+.o .h{display:flex;justify-content:space-between;align-items:baseline}
+.o .h b{font:800 20px Tajawal;color:var(--brick)}
+.o .h span{color:var(--mut);font-size:13px}
+.o p{margin:0}
+.o a{color:var(--brick);font-weight:500}
+.it{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:15px}
+.it small{display:block;color:var(--mut)}
+.tot{display:flex;justify-content:space-between;font-weight:800;border-top:1.5px solid var(--line);padding-top:8px}
+.tot small{font-weight:400;color:var(--mut)}
+.o select{width:100%;padding:9px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.acts .pri{flex:1}
+.empty{text-align:center;color:var(--mut);padding:40px 0;grid-column:1/-1}
+#q{width:100%;margin-bottom:10px;padding:11px 14px;border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+.m{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-radius:12px;margin-bottom:8px}
+.m span{flex:1}
+.m input[type=number]{width:96px;padding:7px;border:1.5px solid var(--line);border-radius:8px;text-align:center}
+.m label{display:flex;align-items:center;gap:6px;color:var(--mut);font-size:14px}
+.m input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok)}
+</style>
+</head>
+<body>
+<div id="lg" class="login">
+  <img src="logo.png" alt="سومر" width="96" height="94">
+  <h1>لوحة المطعم</h1>
+  <input id="em" type="email" placeholder="البريد الإلكتروني" autocomplete="username" aria-label="البريد الإلكتروني">
+  <input id="pw" type="password" placeholder="كلمة السر" autocomplete="current-password" aria-label="كلمة السر">
+  <button id="lb" class="pri" type="button">دخول</button>
+  <p id="le" role="alert"></p>
+</div>
+
+<div id="app" hidden>
+  <div class="bar"><img src="logo.png" alt=""><b>طلبات سومر</b><span id="sum"></span><button id="snd" type="button">🔔 تفعيل الصوت</button><button id="out" type="button">خروج</button></div>
+  <nav class="tabs" id="tabs">
+    <button data-t="new" class="on">جديدة <i id="c_new"></i></button>
+    <button data-t="preparing">قيد التحضير <i id="c_preparing"></i></button>
+    <button data-t="out_for_delivery">في الطريق <i id="c_out_for_delivery"></i></button>
+    <button data-t="done">المنتهية</button>
+    <button data-t="menu">المنيو والأسعار</button>
+  </nav>
+  <main><div id="list"></div></main>
+</div>
+
+<script>
+const U='https://bxtihhtjwsztqncdanzo.supabase.co',
+K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4dGloaHRqd3N6dHFuY2RhbnpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0Njc3MjEsImV4cCI6MjExMDA0MzcyMX0.lr74dhhaVJw3gHNFFKg3NyNFJK6boytnJ21t2etYavo';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>new Intl.NumberFormat('ar-IQ').format(n)+' د.ع';
+const ls={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let S=ls.get('sumer_adm'),tab='new',orders=[],drivers=[],menu=[],seen=null,T=null,ac=null;
+
+async function auth(body,grant){
+  const r=await fetch(U+'/auth/v1/token?grant_type='+grant,{method:'POST',headers:{apikey:K,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json();if(!r.ok)throw new Error('auth');
+  S={access_token:j.access_token,refresh_token:j.refresh_token,uid:j.user.id};ls.set('sumer_adm',S);
+}
+async function api(p,o={},retry=true){
+  const r=await fetch(U+'/rest/v1/'+p,{...o,headers:{apikey:K,Authorization:'Bearer '+S.access_token,'Content-Type':'application/json',...(o.headers||{})}});
+  if(r.status==401&&retry){
+    try{await auth({refresh_token:S.refresh_token},'refresh_token')}catch(e){logout('انتهت الجلسة، سجّل الدخول مجدداً');throw e}
+    return api(p,o,false);
+  }
+  if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.message||'request failed')}
+  const t=await r.text();return t?JSON.parse(t):null;
+}
+function logout(msg){
+  clearTimeout(T);S=null;ls.set('sumer_adm',null);seen=null;
+  $('#app').hidden=true;$('#lg').hidden=false;$('#le').textContent=msg||'';
+}
+async function enter(){
+  const p=await api('profiles?select=role&id=eq.'+S.uid);
+  if(!p||!p[0]||!['admin','staff'].includes(p[0].role)){logout('هذا الحساب لا يملك صلاحية لوحة المطعم.');return}
+  $('#lg').hidden=true;$('#app').hidden=false;
+  drivers=await api('profiles?select=id,full_name&role=eq.driver&is_active=eq.true&order=full_name');
+  poll();
+}
+$('#lb').onclick=async()=>{
+  $('#le').textContent='';
+  try{await auth({email:$('#em').value.trim(),password:$('#pw').value},'password')}
+  catch(e){$('#le').textContent='البريد أو كلمة السر غير صحيحة.';return}
+  $('#pw').value='';
+  try{await enter()}catch(e){if(S)logout('تعذّر تحميل اللوحة. حاول مجدداً.')}
+};
+$('#pw').addEventListener('keydown',e=>{if(e.key=='Enter')$('#lb').click()});
+$('#out').onclick=()=>logout('');
+
+function beep(){
+  if(!ac)return;
+  [0,.25,.5].forEach(t=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=880;g.gain.value=.25;o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+t);o.stop(ac.currentTime+t+.15)});
+}
+$('#snd').onclick=()=>{ac=ac||new (window.AudioContext||window.webkitAudioContext)();beep();$('#snd').textContent='🔔 الصوت مفعّل'};
+window.addEventListener('focus',()=>{document.title='لوحة مطعم سومر'});
+
+async function poll(){
+  clearTimeout(T);
+  try{
+    orders=await api('orders?select=id,order_no,status,created_at,customer_name,customer_phone,address,lat,lng,notes,subtotal,delivery_fee,total,driver_id,zone:delivery_zones(name),order_items(name,qty,notes)&order=created_at.desc&limit=120');
+    const ids=new Set(orders.map(o=>o.id));
+    if(seen&&orders.some(o=>o.status=='new'&&!seen.has(o.id))){beep();document.title='🔔 طلب جديد!'}
+    seen=ids;
+    if(!(document.activeElement&&document.activeElement.closest('#list')))render();else counts();
+  }catch(e){if(!S)return}
+  T=setTimeout(poll,8000);
+}
+function counts(){
+  const td=new Date().toDateString(),t=orders.filter(o=>new Date(o.created_at).toDateString()==td&&o.status!='cancelled');
+  $('#sum').textContent='اليوم: '+t.length+' طلب • '+money(t.reduce((a,o)=>a+o.total,0));
+  ['new','preparing','out_for_delivery'].forEach(k=>$('#c_'+k).textContent=orders.filter(o=>o.status==k).length||'');
+}
+const ACT={
+  new:[['preparing','قبول وبدء التحضير','pri'],['cancelled','إلغاء','ghost']],
+  preparing:[['out_for_delivery','خرج للتوصيل','pri'],['cancelled','إلغاء','ghost']],
+  out_for_delivery:[['delivered','تم التسليم','pri'],['cancelled','إلغاء','ghost']]
+};
+const LBL={delivered:'تم التسليم',cancelled:'ملغي'};
+function card(o){
+  const ago=Math.max(0,Math.round((Date.now()-new Date(o.created_at))/60000));
+  const ph=String(o.customer_phone).replace(/[^\d+]/g,'');
+  const map=o.lat!=null&&o.lng!=null?` • <a href="https://www.google.com/maps?q=${+o.lat},${+o.lng}" target="_blank" rel="noopener">الموقع على الخريطة</a>`:'';
+  const live=!!ACT[o.status];
+  const drv=live?`<select data-d="${o.id}" aria-label="السائق"><option value="">بدون سائق</option>${drivers.map(d=>`<option value="${d.id}"${d.id==o.driver_id?' selected':''}>${esc(d.full_name)}</option>`).join('')}</select>`:(o.driver_id?`<p>السائق: ${esc((drivers.find(d=>d.id==o.driver_id)||{}).full_name||'')}</p>`:'');
+  return `<article class="o"><div class="h"><b>#${o.order_no}</b><span>${ago<1?'الآن':'قبل '+ago+' دقيقة'}${LBL[o.status]?' • '+LBL[o.status]:''}</span></div>
+  <p><b>${esc(o.customer_name)}</b> • <a href="tel:${ph}">${esc(o.customer_phone)}</a></p>
+  <p>${esc((o.zone&&o.zone.name)||'')} — ${esc(o.address)}${map}</p>
+  ${o.order_items.map(i=>`<div class="it">${i.qty} × ${esc(i.name)}${i.notes?`<small>${esc(i.notes)}</small>`:''}</div>`).join('')}
+  ${o.notes?`<p class="it">ملاحظة: ${esc(o.notes)}</p>`:''}
+  <div class="tot"><span>الإجمالي <small>(توصيل ${money(o.delivery_fee)})</small></span><span>${money(o.total)}</span></div>
+  ${drv}
+  ${live?`<div class="acts">${ACT[o.status].map(a=>`<button class="${a[2]}" data-s="${a[0]}" data-o="${o.id}">${a[1]}</button>`).join('')}</div>`:''}</article>`;
+}
+async function render(){
+  counts();
+  if(tab=='menu'){
+    if(!menu.length)menu=await api('menu_items?select=id,name,price,is_available&order=category_id,sort_order');
+    $('#list').innerHTML='<div style="grid-column:1/-1"><input id="q" type="search" placeholder="ابحث عن صنف" aria-label="ابحث عن صنف">'+menu.map(m=>`<div class="m" data-n="${esc(m.name)}"><span>${esc(m.name)}</span><input type="number" min="0" step="250" value="${m.price}" data-pc="${m.id}" aria-label="سعر ${esc(m.name)}"><label><input type="checkbox" data-av="${m.id}"${m.is_available?' checked':''}>متوفر</label></div>`).join('')+'</div>';
+    $('#q').oninput=()=>{const v=$('#q').value.trim();document.querySelectorAll('.m').forEach(r=>r.hidden=!!v&&!r.dataset.n.includes(v))};
+    return;
+  }
+  const l=orders.filter(o=>tab=='done'?LBL[o.status]:o.status==tab);
+  $('#list').innerHTML=l.length?l.map(card).join(''):'<p class="empty">لا توجد طلبات هنا.</p>';
+}
+$('#tabs').addEventListener('click',e=>{
+  const b=e.target.closest('[data-t]');if(!b)return;
+  tab=b.dataset.t;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));render();
+});
+$('#list').addEventListener('click',async e=>{
+  const b=e.target.closest('[data-s]');if(!b)return;
+  const o=orders.find(x=>x.id==b.dataset.o),s=b.dataset.s;
+  if(s=='out_for_delivery'&&!o.driver_id){alert('اختر السائق أولاً.');return}
+  if(s=='cancelled'&&!confirm('إلغاء هذا الطلب؟'))return;
+  b.disabled=true;
+  try{await api('orders?id=eq.'+o.id,{method:'PATCH',body:JSON.stringify({status:s})})}catch(x){alert('تعذّر تحديث الطلب. حاول مجدداً.')}
+  poll();
+});
+$('#list').addEventListener('change',async e=>{
+  const t=e.target;
+  try{
+    if(t.dataset.d!==undefined)await api('orders?id=eq.'+t.dataset.d,{method:'PATCH',body:JSON.stringify({driver_id:t.value||null})});
+    else if(t.dataset.av){await api('menu_items?id=eq.'+t.dataset.av,{method:'PATCH',body:JSON.stringify({is_available:t.checked})});menu.find(m=>m.id==t.dataset.av).is_available=t.checked}
+    else if(t.dataset.pc){const v=Math.round(+t.value);if(!(v>=0)){t.value=menu.find(m=>m.id==t.dataset.pc).price;return}await api('menu_items?id=eq.'+t.dataset.pc,{method:'PATCH',body:JSON.stringify({price:v})});menu.find(m=>m.id==t.dataset.pc).price=v}
+  }catch(x){alert('تعذّر حفظ التغيير. حاول مجدداً.')}
+  if(t.dataset.d!==undefined)poll();
+});
+if(S)enter().catch(()=>{if(S)logout('تعذّر تحميل اللوحة. سجّل الدخول مجدداً.')});
+</script>
+</body>
+</html>
